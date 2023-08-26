@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jarvis Chatbot</title>
+</head>
+<body>
+    <h1>Jarvis Chatbot</h1>
+    <p>Jarvis: Hello! How can I assist you today?</p>
+    <button onclick="startListening()">Start Listening</button>
+    <button onclick="stopListening()">Stop Listening</button>
+    <div id="userInput"></div>
+    <div id="response"></div>
+
+    <script>
+        const recognition = new webkitSpeechRecognition();
+        recognition.continuous = true;
+        recognition.lang = 'en-US';
+
+        recognition.onresult = function (event) {
+            const result = event.results[event.results.length - 1];
+            const userInput = result[0].transcript;
+            document.getElementById('userInput').textContent = `You: ${userInput}`;
+
+            handleUserInput(userInput);
+        }
+
+        recognition.onerror = function (event) {
+            console.error('Speech recognition error:', event.error);
+        }
+
+        function startListening() {
+            recognition.start();
+        }
+
+        function stopListening() {
+            recognition.stop();
+        }
+
+        function speak(response) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(response);
+            synth.speak(utterance);
+        }
+
+        function handleUserInput(userInput) {
+            const responseDiv = document.getElementById('response');
+            let response = '';
+
+            if (userInput.toLowerCase().includes('hello')) {
+                response = 'Hello! How can I help you?';
+            } else if (userInput.toLowerCase().includes('how are you')) {
+                response = "I'm just a computer program, but I'm here to assist you.";
+            } else if (userInput.toLowerCase().includes('goodbye')) {
+                response = 'Goodbye! Have a great day!';
+                speak(response);
+            } else {
+                response = "I'm sorry, I didn't understand that.";
+            }
+
+            responseDiv.textContent = `Jarvis: ${response}`;
+            speak(response);
+        }
+    </script>
+</body>
+</html>
