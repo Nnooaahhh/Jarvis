@@ -1,48 +1,51 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Jarvis Chatbot</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #00d8ff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
 
-        h1 {
-            color: #333;
-        }
+h1 {
+    color: #00d8ff;
+    font-size: 36px;
+}
 
-        p {
-            font-size: 18px;
-            margin: 20px 0;
-        }
+p {
+    font-size: 20px;
+    margin: 20px 0;
+}
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #0074d9;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #00d8ff;
+    color: #1a1a1a;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
-        button:hover {
-            background-color: #0056b3;
-        }
+button:hover {
+    background-color: #0091ea;
+}
 
-        #userInput {
-            font-weight: bold;
-            margin: 10px 0;
-        }
+#userInput {
+    font-weight: bold;
+    margin: 10px 0;
+}
 
-        #response {
-            font-weight: bold;
-            color: #333;
-        }
-    </style>
-</head>
-<body>
-    <!-- Your HTML content here -->
-</body>
-</html>
+#response {
+    font-weight: bold;
+    color: #00d8ff;
+}
+
+#container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
