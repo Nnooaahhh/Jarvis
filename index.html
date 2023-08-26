@@ -4,14 +4,15 @@
     <title>Jarvis Chatbot</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
-    <h1>Jarvis Chatbot</h1>
-    <p>Jarvis: Hello! How can I assist you today?</p>
-    <button onclick="startListening()">Start Listening</button>
-    <button onclick="stopListening()">Stop Listening</button>
-    <div id="userInput"></div>
-    <div id="response"></div>
+    <div id="container">
+        <h1>Jarvis Chatbot</h1>
+        <p>Jarvis: Hello! How can I assist you today?</p>
+        <button onclick="startListening()">Start Listening</button>
+        <button onclick="stopListening()">Stop Listening</button>
+        <div id="userInput"></div>
+        <div id="response"></div>
+    </div>
 
     <script>
         const recognition = new webkitSpeechRecognition();
@@ -55,6 +56,13 @@
             } else if (userInput.toLowerCase().includes('goodbye')) {
                 response = 'Goodbye! Have a great day!';
                 speak(response);
+            } else if (userInput.toLowerCase().includes('send an email to')) {
+                const recipient = userInput.split('send an email to ')[1];
+                response = `Sure, I'll send an email to ${recipient}.`;
+            } else if (userInput.toLowerCase().includes('open google and search for')) {
+                const query = userInput.split('open google and search for ')[1];
+                response = `Opening Google and searching for ${query}.`;
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`);
             } else {
                 response = "I'm sorry, I didn't understand that.";
             }
