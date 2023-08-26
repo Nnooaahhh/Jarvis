@@ -7,7 +7,7 @@
 <body>
     <div id="container">
         <h1>Jarvis Chatbot</h1>
-        <p>Jarvis: Hello! How can I assist you today?</p>
+        <p id="status">Status: Sleeping</p>
         <div id="userInput"></div>
         <div id="response"></div>
     </div>
@@ -37,16 +37,16 @@
             annyang.start();
         }
 
-        recognition.onresult = function (event) {
-            const result = event.results[event.results.length - 1];
-            const userInput = result[0].transcript;
-            document.getElementById('userInput').textContent = `You: ${userInput}`;
-
-            handleUserInput(userInput);
+        recognition.onstart = function () {
+            document.getElementById('container').classList.add('listening');
+            document.getElementById('status').textContent = 'Status: Listening';
+            listening = true;
         }
 
-        recognition.onerror = function (event) {
-            console.error('Speech recognition error:', event.error);
+        recognition.onend = function () {
+            document.getElementById('container').classList.remove('listening');
+            document.getElementById('status').textContent = 'Status: Sleeping';
+            listening = false;
         }
 
         function startListening() {
