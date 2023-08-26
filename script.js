@@ -102,9 +102,4 @@ function handleUserInput(userInput) {
     speak(response);
 }
 
-// Wake Up Button Click Event
-function wakeUp() {
-    if (!listening) {
-        startListening();
-    }
-}
+
