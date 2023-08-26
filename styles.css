@@ -1,10 +1,9 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Arial', sans-serif;
     color: #00d8ff;
     text-align: center;
     margin: 0;
     padding: 0;
-    transition: background-image 0.5s;
 }
 
 #container {
@@ -13,32 +12,47 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.5s;
-    background-color: rgba(0, 0, 0, 0); /* Initial background color (transparent) */
-    background-image: none; /* Initial background image (none) */
+    background-color: #000; /* Black background when asleep */
+    color: #00d8ff;
 }
 
-#container.sleeping {
-    background-color: #000; /* Black background when sleeping */
-    background-image: none; /* No background image when sleeping */
-}
-
-#container.listening {
+.listening #container {
     background-color: rgba(0, 0, 0, 0.5); /* Custom background color when listening */
-    background-image: url('https://i.pinimg.com/originals/b5/db/46/b5db46949d9005be06ebf248ab1dbb00.gif'); /* Custom background image when listening */
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 
 h1 {
-    font-family: 'Roboto', sans-serif;
     color: #00d8ff;
     font-size: 36px;
     margin-top: 30px;
 }
 
 p {
-    font-family: 'Roboto', sans-serif;
     font-size: 20px;
     margin: 20px 0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #00d8ff;
+    color: #1a1a1a;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #0091ea;
+}
+
+#userInput {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#response {
+    font-weight: bold;
+    color: #00d8ff;
 }
