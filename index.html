@@ -58,7 +58,9 @@
                 speak(response);
             } else if (userInput.toLowerCase().includes('send an email to')) {
                 const recipient = userInput.split('send an email to ')[1];
-                response = `Sure, I'll send an email to ${recipient}.`;
+                const emailLink = `mailto:${recipient}`;
+                response = `Sure, I'll open your email client to send an email to ${recipient}.`;
+                window.location.href = emailLink; // Open email client
             } else if (userInput.toLowerCase().includes('open google and search for')) {
                 const query = userInput.split('open google and search for ')[1];
                 response = `Opening Google and searching for ${query}.`;
