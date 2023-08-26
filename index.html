@@ -10,9 +10,9 @@
         <p id="status">Status: Sleeping</p>
         <div id="userInput"></div>
         <div id="response"></div>
+        <button id="wakeButton" onclick="startListening()">Wake Up</button>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
     <script>
         const recognition = new webkitSpeechRecognition();
         recognition.continuous = true;
@@ -53,12 +53,16 @@
         function startListening() {
             recognition.start();
             listening = true;
+            document.getElementById('container').classList.add('listening');
+            document.getElementById('status').textContent = 'Status: Listening';
             console.log("Listening...");
         }
 
         function stopListening() {
             recognition.stop();
             listening = false;
+            document.getElementById('container').classList.remove('listening');
+            document.getElementById('status').textContent = 'Status: Sleeping';
             console.log("Stopped listening.");
         }
 
