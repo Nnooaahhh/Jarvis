@@ -4,6 +4,8 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    transition: background-color 0.5s;
+    background-color: #000; /* Set a default black background */
 }
 
 #container {
@@ -12,8 +14,6 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    background-color: #000; /* Black background when asleep */
-    color: #00d8ff;
 }
 
 .listening #container {
