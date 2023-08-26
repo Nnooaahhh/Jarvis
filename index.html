@@ -8,8 +8,6 @@
     <div id="container">
         <h1>Jarvis Chatbot</h1>
         <p>Jarvis: Hello! How can I assist you today?</p>
-        <button onclick="startListening()">Start Listening</button>
-        <button onclick="stopListening()">Stop Listening</button>
         <div id="userInput"></div>
         <div id="response"></div>
     </div>
@@ -18,6 +16,26 @@
         const recognition = new webkitSpeechRecognition();
         recognition.continuous = true;
         recognition.lang = 'en-US';
+
+        let listening = false;
+
+        if (annyang) {
+            const commands = {
+                'Jarvis': () => {
+                    if (!listening) {
+                        startListening();
+                    }
+                },
+                'Bye': () => {
+                    if (listening) {
+                        stopListening();
+                    }
+                }
+            };
+
+            annyang.addCommands(commands);
+            annyang.start();
+        }
 
         recognition.onresult = function (event) {
             const result = event.results[event.results.length - 1];
@@ -33,15 +51,23 @@
 
         function startListening() {
             recognition.start();
+            listening = true;
+            console.log("Listening...");
         }
 
         function stopListening() {
             recognition.stop();
+            listening = false;
+            console.log("Stopped listening.");
         }
 
         function speak(response) {
             const synth = window.speechSynthesis;
+            const voices = synth.getVoices();
+            const maleVoice = voices.find(voice => voice.name === 'Microsoft David Desktop - English (United States)');
+
             const utterance = new SpeechSynthesisUtterance(response);
+            utterance.voice = maleVoice; // Set the male voice
             synth.speak(utterance);
         }
 
