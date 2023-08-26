@@ -103,8 +103,8 @@ function handleUserInput(userInput) {
 }
 
 // Wake Up Button Click Event
-document.getElementById('wakeButton').addEventListener('click', () => {
+function wakeUp() {
     if (!listening) {
         startListening();
     }
-});
+}
