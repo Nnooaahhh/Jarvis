@@ -103,4 +103,8 @@ function handleUserInput(userInput) {
 }
 
 // Wake Up Button Click Event
-document.getElementById('wakeButton').addEventListener('click', startListening);
+document.getElementById('wakeButton').addEventListener('click', () => {
+    if (!listening) {
+        startListening();
+    }
+});
