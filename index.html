@@ -63,8 +63,12 @@
                 window.location.href = emailLink; // Open email client
             } else if (userInput.toLowerCase().includes('open google and search for')) {
                 const query = userInput.split('open google and search for ')[1];
-                response = `Opening Google and searching for ${query}.`;
-                window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`);
+                if (query) {
+                    response = `Opening Google and searching for ${query}.`;
+                    window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`);
+                } else {
+                    response = "I'm sorry, I didn't catch the search query.";
+                }
             } else {
                 response = "I'm sorry, I didn't understand that.";
             }
