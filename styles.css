@@ -1,12 +1,31 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url('background.jpg'); /* Replace with your image URL */
-    background-size: cover;
-    background-repeat: no-repeat;
     color: #00d8ff;
     text-align: center;
     margin: 0;
     padding: 0;
+    transition: background-image 0.5s;
+}
+
+#container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s;
+}
+
+#container.sleeping {
+    background-color: #000; /* Black background when sleeping */
+    background-image: none; /* No background image when sleeping */
+}
+
+#container.listening {
+    background-color: rgba(0, 0, 0, 0.5); /* Custom background color when listening */
+    background-image: url('https://i.pinimg.com/originals/b5/db/46/b5db46949d9005be06ebf248ab1dbb00.gif'); /* Custom background image when listening */
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 h1 {
@@ -44,13 +63,4 @@ button:hover {
 #response {
     font-weight: bold;
     color: #00d8ff;
-}
-
-#container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
